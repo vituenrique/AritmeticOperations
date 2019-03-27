@@ -1,12 +1,12 @@
 ﻿  main.cpp
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(229): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(230): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(231): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(354): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(355): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(356): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(382): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(383): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\victor-nca\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(384): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  AritmeticOperations.vcxproj -> C:\Users\Victor-NCA\documents\visual studio 2015\Projects\AritmeticOperations\x64\Debug\AritmeticOperations.exe
-  AritmeticOperations.vcxproj -> C:\Users\Victor-NCA\documents\visual studio 2015\Projects\AritmeticOperations\x64\Debug\AritmeticOperations.pdb (Partial PDB)
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(320): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(321): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(322): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(445): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(446): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(447): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(473): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(474): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\victo\documents\visual studio 2015\projects\aritmeticoperations\aritmeticoperations\main.cpp(475): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  AritmeticOperations.vcxproj -> C:\Users\victo\Documents\Visual Studio 2015\Projects\AritmeticOperations\x64\Debug\AritmeticOperations.exe
+  AritmeticOperations.vcxproj -> C:\Users\victo\Documents\Visual Studio 2015\Projects\AritmeticOperations\x64\Debug\AritmeticOperations.pdb (Partial PDB)

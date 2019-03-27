@@ -20,50 +20,143 @@ Mat Sub0(Mat img1, Mat img2);
 Mat SubNormalized(Mat img1, Mat img2);
 Mat Multi(Mat img, float scale);
 Mat Div(Mat img1, Mat img2);
+//float Average(Mat img1);
 float normalizRange(float max, float min, float maxTarget, float minTarget, float value);
 
 int main() {
-	Mat img1, img2;
+	while (true) {
+		int operation;
+		cout << "1 - Adicao" << endl;
+		cout << "2 - Subtracao" << endl;
+		cout << "3 - Multiplicacao" << endl;
+		cout << "4 - Divisao" << endl;
+		cout << "5 - Sair" << endl;
+		cout << "Opcao: ";
+		cin >> operation;
+		switch (operation) {
+			case 1: // Add
+			{
+				Mat img1 = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
+				if (img1.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
 
-	img1 = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
-	if (img1.empty()) {
-		cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
-		_getch();
-		return(0);
+				Mat img2 = imread("Images/lenno.jpg", CV_LOAD_IMAGE_COLOR);
+				if (img2.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat add255_img = Add255(img1, img2);
+				namedWindow("Add255", CV_WINDOW_AUTOSIZE);
+				imshow("Add255", add255_img);
+
+				Mat addRest_img = AddRest(img1, img2);
+				namedWindow("AddRest", CV_WINDOW_AUTOSIZE);
+				imshow("AddRest", addRest_img);
+
+				Mat addNormalized_img = AddNormalized(img1, img2);
+				namedWindow("AddNormalized", CV_WINDOW_AUTOSIZE);
+				imshow("AddNormalized", addNormalized_img);
+
+				waitKey(0);
+
+				destroyAllWindows();
+				system("cls");
+				break;
+			}
+			case 2: // Subtration
+			{
+				Mat img1 = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
+				if (img1.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat img2 = imread("Images/lenno.jpg", CV_LOAD_IMAGE_COLOR);
+				if (img2.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat sub0_img = Sub0(img1, img2);
+				namedWindow("Sub0", CV_WINDOW_AUTOSIZE);
+				imshow("Sub0", sub0_img);
+
+				Mat subNormalized_img = SubNormalized(img1, img2);
+				namedWindow("SubNormalized", CV_WINDOW_AUTOSIZE);
+				imshow("SubNormalized", subNormalized_img);
+
+				waitKey(0);
+
+				destroyAllWindows();
+				system("cls");
+				break;
+			}
+			case 3: // Multiplication
+			{
+				Mat img = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
+				if (img.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat multi_img = Multi(img, 5.5);
+				namedWindow("Multi", CV_WINDOW_AUTOSIZE);
+				imshow("Multi", multi_img);
+
+				waitKey(0);
+
+				destroyAllWindows();
+				system("cls");
+				break;
+			}
+			case 4: // Divide
+			{
+				Mat img1 = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
+				if (img1.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat img2 = imread("Images/lenno.jpg", CV_LOAD_IMAGE_COLOR);
+				if (img2.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat div_img = Div(img1, img2);
+				namedWindow("Div", CV_WINDOW_AUTOSIZE);
+				imshow("Div", div_img);
+
+				waitKey(0);
+
+				destroyAllWindows();
+				system("cls");
+				break;
+			}
+			case 5:
+			{
+				return(0);
+			}
+			default:
+				system("cls");
+
+				cout << "Opcao invalida." << endl;
+
+				system("pause");
+				system("cls");
+				break;
+		}
 	}
-
-	img2 = imread("Images/lenno.jpg", CV_LOAD_IMAGE_COLOR);
-	if (img2.empty()) {
-		cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
-		_getch();
-		return(0);
-	}
-
-	//Mat add255_img = Add255(img1, img2);
-	//Mat addRest_img = AddRest(img1, img2);
-	//Mat addNormalized_img = AddNormalized(img1, img2);
-	//Mat sub0_img = Sub0(img1, img2);
-	//Mat subNormalized_img = SubNormalized(img1, img2);
-	//Mat multi_img = Multi(img1, 5.5);
-	Mat div_img = Div(img1, img2);
-
-	//namedWindow("Add255", CV_WINDOW_AUTOSIZE);
-	//namedWindow("AddRest", CV_WINDOW_AUTOSIZE);
-	//namedWindow("AddNormalized", CV_WINDOW_AUTOSIZE);
-	//namedWindow("Sub0", CV_WINDOW_AUTOSIZE);
-	//namedWindow("SubNormalized", CV_WINDOW_AUTOSIZE);
-	//namedWindow("Multi", CV_WINDOW_AUTOSIZE);
-	namedWindow("Div", CV_WINDOW_AUTOSIZE);
-
-	//imshow("Add255", add255_img);
-	//imshow("AddRest", addRest_img);
-	//imshow("AddNormalized", addNormalized_img);
-	//imshow("Sub0", sub0_img);
-	//imshow("SubNormalized", subNormalized_img);
-	//imshow("Multi", multi_img);
-	imshow("Div", div_img);
-
-	waitKey(0);
 
 	return(0);
 }
@@ -168,7 +261,7 @@ Mat AddNormalized(Mat img1, Mat img2) {
 
 	int maxR = -1, maxG = -1, maxB = -1;
 	int minR = 255, minG = -1, minB = 255;
-	
+
 	int **auxR = (int**) calloc(img1.rows, sizeof(int*));
 	int **auxG = (int**) calloc(img1.rows, sizeof(int*));
 	int **auxB = (int**) calloc(img1.rows, sizeof(int*));
@@ -441,41 +534,33 @@ Mat Div(Mat img1, Mat img2) {
 	return result_img;
 }
 
+//// When the sum is lower than 0 the pixel value is set to 0
+//float Average(Mat img1) {
+//	Mat result_img(img1.rows, img1.cols, img1.type());
+//
+//	float r = 0, g = 0, b = 0;
+//
+//	for (int i = 0; i < img1.rows; i++) { // Rows
+//		for (int j = 0; j < img1.cols; j++) { // Columns
+//			try {
+//
+//				Vec3b pixel = img1.at<Vec3b>(Point(j, i));
+//				uchar blue = pixel.val[0];
+//				uchar green = pixel.val[1];
+//				uchar red = pixel.val[2];
+//
+//				r += red;
+//				g += green;
+//				b += blue;
+//
+//			} catch (Exception & e) {
+//				cerr << e.msg << endl;
+//			}
+//		}
+//	}
+//
+//
+//
+//	return result_img;
+//}
 
-// When the sum is lower than 0 the pixel value is set to 0
-Mat Div(Mat img1, Mat img2) {
-	Mat result_img(img1.rows, img1.cols, img1.type());
-
-	for (int i = 0; i < img1.rows; i++) { // Rows
-		for (int j = 0; j < img1.cols; j++) { // Columns
-			try {
-
-				Vec3b pixel1 = img1.at<Vec3b>(Point(j, i));
-				uchar blue1 = pixel1.val[0];
-				uchar green1 = pixel1.val[1];
-				uchar red1 = pixel1.val[2];
-
-				Vec3b pixel2 = img2.at<Vec3b>(Point(j, i));
-				uchar blue2 = pixel2.val[0];
-				uchar green2 = pixel2.val[1];
-				uchar red2 = pixel2.val[2];
-
-				int r = red2 != 0 ? (uchar) red1 / (uchar) red2 : 0;
-				int g = green2 != 0 ? (uchar) green1 / (uchar) green2 : 0;
-				int b = blue2 != 0 ? (uchar) blue1 / (uchar) blue2 : 0;
-
-				Vec3b pixel;
-				pixel.val[0] = (uchar) b;
-				pixel.val[1] = (uchar) g;
-				pixel.val[2] = (uchar) r;
-
-				result_img.at<Vec3b>(Point(j, i)) = pixel;
-
-			} catch (Exception & e) {
-				cerr << e.msg << endl;
-			}
-		}
-	}
-
-	return result_img;
-}
