@@ -20,7 +20,7 @@ Mat Sub0(Mat img1, Mat img2);
 Mat SubNormalized(Mat img1, Mat img2);
 Mat Multi(Mat img, float scale);
 Mat Div(Mat img1, Mat img2);
-//float Average(Mat img1);
+Mat AverageFilter(Mat img, int window);
 float normalizRange(float max, float min, float maxTarget, float minTarget, float value);
 
 int main() {
@@ -30,7 +30,8 @@ int main() {
 		cout << "2 - Subtracao" << endl;
 		cout << "3 - Multiplicacao" << endl;
 		cout << "4 - Divisao" << endl;
-		cout << "5 - Sair" << endl;
+		cout << "5 - Filtro da Media" << endl;
+		cout << "6 - Sair" << endl;
 		cout << "Opcao: ";
 		cin >> operation;
 		switch (operation) {
@@ -143,7 +144,26 @@ int main() {
 				system("cls");
 				break;
 			}
-			case 5:
+			case 5: // Divide
+			{
+				Mat img = imread("Images/lenna.png", CV_LOAD_IMAGE_COLOR);
+				if (img.empty()) {
+					cout << "Nao foi possivel acessar o caminho da imagem especificado.\n\n";
+					_getch();
+					return(0);
+				}
+
+				Mat avg_img = AverageFilter(img, 3);
+				namedWindow("Div", CV_WINDOW_AUTOSIZE);
+				imshow("Div", avg_img);
+
+				waitKey(0);
+
+				destroyAllWindows();
+				system("cls");
+				break;
+			}
+			case 6:
 			{
 				return(0);
 			}
@@ -534,33 +554,43 @@ Mat Div(Mat img1, Mat img2) {
 	return result_img;
 }
 
-//// When the sum is lower than 0 the pixel value is set to 0
-//float Average(Mat img1) {
-//	Mat result_img(img1.rows, img1.cols, img1.type());
-//
-//	float r = 0, g = 0, b = 0;
-//
-//	for (int i = 0; i < img1.rows; i++) { // Rows
-//		for (int j = 0; j < img1.cols; j++) { // Columns
-//			try {
-//
-//				Vec3b pixel = img1.at<Vec3b>(Point(j, i));
-//				uchar blue = pixel.val[0];
-//				uchar green = pixel.val[1];
-//				uchar red = pixel.val[2];
-//
-//				r += red;
-//				g += green;
-//				b += blue;
-//
-//			} catch (Exception & e) {
-//				cerr << e.msg << endl;
-//			}
-//		}
-//	}
-//
-//
-//
-//	return result_img;
-//}
+// Low Pass Filters
+Mat AverageFilter(Mat img, int window) {
+
+	if (window % 2 != 1) return img;
+
+	Mat result_img(img.rows, img.cols, img.type(), Scalar(0, 0, 0));
+
+	int n = int(window / 2);
+
+	for (int i = n; i < img.rows - n; i++) { // Rows
+		for (int j = n; j < img.cols - n; j++) { // Columns
+			float r = 0, g = 0, b = 0;
+			for (int x = 0; x < window; x++) { //windows rows
+				for (int y = 0; y < window; y++) { // windows cols
+					try {
+						Vec3b pixel = img.at<Vec3b>(Point(j - n + y, i - n + x));
+						uchar blue = pixel.val[0];
+						uchar green = pixel.val[1];
+						uchar red = pixel.val[2];
+
+						r += (uchar) red;
+						g += (uchar) green;
+						b += (uchar) blue;
+
+					} catch (Exception & e) {
+						cerr << e.msg << endl;
+					}
+				}
+			}
+			Vec3b finalPixel;
+			finalPixel.val[0] = (uchar) round((b * 1.0) / (pow(window, 2)));
+			finalPixel.val[1] = (uchar) round((g * 1.0) / (pow(window, 2)));
+			finalPixel.val[2] = (uchar) round((r * 1.0) / (pow(window, 2)));
+
+			result_img.at<Vec3b>(Point(j, i)) = finalPixel;
+		}
+	}
+	return result_img;
+}
 
